@@ -28,7 +28,7 @@ function ParticipantLine({ item }: { item: SpeakerItem }) {
 
 export default function MeetingDetail({ meeting }: MeetingDetailProps) {
   const meetingTypeLabel = {
-    testimony: 'Testimony Meeting', regular: 'Regular Meeting', stake: 'Stake Meeting', general: 'General Meeting'
+    testimony: 'Testimony Meeting', regular: 'Regular Meeting', stake: 'Stake Meeting', general: 'General Meeting', special: 'Special Meeting'
   }[meeting.meetingType];
 
   return (

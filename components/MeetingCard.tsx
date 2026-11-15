@@ -13,12 +13,12 @@ function formatDate(date: string) {
 
 export default function MeetingCard({ meeting }: MeetingCardProps) {
   const meetingTypeLabel = {
-    testimony: 'Testimony Meeting', regular: 'Regular Meeting', stake: 'Stake Meeting', general: 'General Meeting'
+    testimony: 'Testimony Meeting', regular: 'Regular Meeting', stake: 'Stake Meeting', general: 'General Meeting', special: 'Special Meeting'
   }[meeting.meetingType];
 
   return (
     <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
-      <p className="text-sm font-semibold uppercase tracking-wide text-[#6b7d60]">{meetingTypeLabel}</p>
+      <p className="text-sm font-semibold uppercase tracking-wide text-[#556b4f]">{meetingTypeLabel}</p>
       <h2 className="mt-2 text-xl font-semibold text-slate-900">{formatDate(meeting.date)}</h2>
       <dl className="mt-4 space-y-1 text-sm text-slate-700">
         <div>
