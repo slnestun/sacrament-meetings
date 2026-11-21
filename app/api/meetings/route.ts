@@ -1,8 +1,14 @@
-import { getMeetings } from '@/lib/meetings-db';
+import { getMeetingByDate, getMeetings } from '@/lib/meetings-db';
 
-export function GET(request: Request) {
+export async function GET(request: Request) {
   const date = new URL(request.url).searchParams.get('date');
-  const meetings = getMeetings(date);
+
+  if (date) {
+    const meeting = await getMeetingByDate(date);
+    return Response.json(meeting ? [meeting] : []);
+  }
+
+  const meetings = await getMeetings();
 
   return Response.json(meetings);
 }
