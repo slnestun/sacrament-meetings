@@ -27,9 +27,14 @@ export default async function MeetingsPage(props: {
     <>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <h1 className="font-serif text-3xl font-bold text-[#33443b]">Sacrament Meetings</h1>
-        <Link href="/meetings/current" className="rounded-md border border-[#83937a] px-4 py-2 text-sm font-medium text-[#40523b] hover:bg-[#e8ede4]">
-          View current meeting
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/meetings/new" className="rounded-md bg-[#556b4f] px-4 py-2 text-sm font-medium text-white hover:bg-[#40523b]">
+            Create meeting
+          </Link>
+          <Link href="/meetings/current" className="rounded-md border border-[#83937a] px-4 py-2 text-sm font-medium text-[#40523b] hover:bg-[#e8ede4]">
+            View current meeting
+          </Link>
+        </div>
       </div>
 
       <MeetingSearch />

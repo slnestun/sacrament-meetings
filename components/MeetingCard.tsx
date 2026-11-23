@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { deleteMeeting } from '@/lib/actions';
 import type { SacramentMeeting } from '@/lib/types';
 
 interface MeetingCardProps {
@@ -30,12 +31,25 @@ export default function MeetingCard({ meeting }: MeetingCardProps) {
           <dd className="inline">{meeting.conducting}</dd>
         </div>
       </dl>
-      <Link
-        href={`/meetings/${meeting.id}`}
-        className="mt-5 inline-flex rounded-md bg-[#556b4f] px-4 py-2 text-sm font-medium text-white hover:bg-[#40523b] focus:outline-none focus:ring-2 focus:ring-[#556b4f] focus:ring-offset-2"
-      >
-        View program
-      </Link>
+      <div className="mt-5 flex flex-wrap gap-2">
+        <Link
+          href={`/meetings/${meeting.id}`}
+          className="inline-flex rounded-md bg-[#556b4f] px-4 py-2 text-sm font-medium text-white hover:bg-[#40523b] focus:outline-none focus:ring-2 focus:ring-[#556b4f] focus:ring-offset-2"
+        >
+          View program
+        </Link>
+        <Link
+          href={`/meetings/${meeting.id}/edit`}
+          className="inline-flex rounded-md border border-[#556b4f] px-4 py-2 text-sm font-medium text-[#40523b] hover:bg-[#e8ede4] focus:outline-none focus:ring-2 focus:ring-[#556b4f] focus:ring-offset-2"
+        >
+          Edit
+        </Link>
+        <form action={deleteMeeting.bind(null, meeting.id)}>
+          <button type="submit" className="inline-flex rounded-md border border-red-700 px-4 py-2 text-sm font-medium text-red-800 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">
+            Delete<span className="sr-only"> meeting on {formatDate(meeting.date)}</span>
+          </button>
+        </form>
+      </div>
     </article>
   );
 }
